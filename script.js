@@ -9,6 +9,7 @@ let lat;
 let lng;
 let popUptxt1;
 let popUptxt2;
+let popUptxt3;
 
 //REGEX FOR IP ADDRESS!
 const ipRegex = /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
@@ -20,7 +21,7 @@ const displayMap = () => {
     attribution: false,
   }).addTo(mymap);
   let marker = L.marker([lat, lng]).addTo(mymap);
-  marker.bindPopup(`<b>${popUptxt1}</b><br>${popUptxt2}`);
+  marker.bindPopup(`<b>${popUptxt1}</b><br>${popUptxt2}<br>${popUptxt3}`);
 };
 
 //SHOW THE DATA!
@@ -55,6 +56,7 @@ const getInfo = async () => {
   lng = data.location.lng;
   popUptxt1 = data.location.country;
   popUptxt2 = data.location.city;
+  popUptxt3 = data.location.region;
   displayData(data);
   displayMap();
 };
@@ -69,6 +71,7 @@ const getInitialInfo = async () => {
   lng = data.location.lng;
   popUptxt1 = data.location.country;
   popUptxt2 = data.location.city;
+  popUptxt3 = data.location.region;
   displayData(data);
   displayMap();
 };
